@@ -210,8 +210,21 @@ This bundles your git repository — including the `.git` history we review, and
 respecting `.gitignore` (so `.env`, `.venv`, `__pycache__`, etc. are excluded) — and
 uploads it to our evaluation system.
 
+### Providing Your Email
+
+The CLI needs your email address to notify you that the upload succeeded. It will:
+
+1. First try to read your email from `git config user.email`
+2. If it is not set, prompt you to enter it interactively
+3. Alternatively, pass it directly: `./run.sh publish --email you@example.com`
+
+### Confirmation
+
+After the upload completes, you will be asked to reply to the email you received for this assignment with your name and the repository name. Please send that reply so we can match your submission to your application.
+
 **Troubleshooting**
 
 - *"Not inside a git repository"* — initialize git first: `git init && git add -A && git commit -m "initial"`
+- *"Repository must have at least one commit after initialization"* — the initial setup commit is not enough. Make at least one additional commit with your work before submitting.
 - *Binary not found* — run it directly: `bin/latent-cli-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m) publish`
 - *Upload fails* — check your internet connection
